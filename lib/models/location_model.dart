@@ -5,6 +5,7 @@ class LocationModel {
   final double latitude;
   final double longitude;
   final String? description;
+  final double radius;
 
   const LocationModel({
     required this.id,
@@ -13,6 +14,7 @@ class LocationModel {
     required this.latitude,
     required this.longitude,
     this.description,
+    this.radius = 10.0,
   });
 
   factory LocationModel.fromJson(Map<String, dynamic> json) {

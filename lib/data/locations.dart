@@ -1,7 +1,7 @@
 import '../models/location_model.dart';
 
 // TODO: substituir latitude/longitude pelos valores reais
-const List<LocationModel> environments = [
+const List<LocationModel> locations = [
   LocationModel(
     id: '1',
     name: 'Estacionamento',

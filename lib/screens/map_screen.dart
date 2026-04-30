@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/environments.dart';
+import '../data/locations.dart';
 import '../models/location_model.dart';
 import '../services/gps_service.dart';
 
@@ -20,7 +20,7 @@ class _MapScreenState extends State<MapScreen> {
   String _distanceText = '--';
   bool _withinRadius = false;
 
-  LocationModel get _currentTarget => environments.first;
+  LocationModel get _currentTarget => locations.first;
 
   @override
   void initState() {

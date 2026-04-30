@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../data/locations.dart';
 import '../models/location_model.dart';
 import '../services/gps_service.dart';
+import 'dialog_screen.dart';
 
 class MapScreen extends StatefulWidget {
   static const routeName = '/map';
@@ -43,6 +45,20 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  void _openDialog() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => DialogScreen(
+          characterName: _currentTarget.name,
+          dialogText: _currentTarget.description ?? 'Você chegou a ${_currentTarget.name}!',
+          characterWidget: const SizedBox.shrink(),
+          onContinue: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+
   Future<void> _updateDistance() async {
     final position = await _gpsService.getCurrentPosition();
     if (position != null && mounted) {
@@ -56,7 +72,9 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
       backgroundColor: const Color(0xFF0D1554),
       body: SafeArea(
         child: _isLoading
@@ -128,31 +146,63 @@ class _MapScreenState extends State<MapScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 56,
-                          child: ElevatedButton(
-                            onPressed: _updateDistance,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFCC2222),
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                        child: Column(
+                          children: [
+                            if (_withinRadius) ...[
+                              SizedBox(
+                                width: double.infinity,
+                                height: 56,
+                                child: ElevatedButton(
+                                  onPressed: _openDialog,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFFCC2222),
+                                    foregroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    elevation: 0,
+                                  ),
+                                  child: const Text(
+                                    'Ver localização',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                               ),
-                              elevation: 0,
-                            ),
-                            child: const Text(
-                              'Atualizar',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                              const SizedBox(height: 12),
+                            ],
+                            SizedBox(
+                              width: double.infinity,
+                              height: 56,
+                              child: ElevatedButton(
+                                onPressed: _updateDistance,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: _withinRadius
+                                      ? Colors.white.withValues(alpha: 0.1)
+                                      : const Color(0xFFCC2222),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  elevation: 0,
+                                ),
+                                child: const Text(
+                                  'Atualizar',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ],
                   ),
+      ),
       ),
     );
   }

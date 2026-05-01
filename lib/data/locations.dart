@@ -10,6 +10,7 @@ const List<LocationModel> locations = [
     latitude: -23.5000,
     longitude: -46.6000,
     radius: 10.0,
+    imagePath: 'assets/estacionamento.png',
   ),
   LocationModel(
     id: '2',
@@ -19,6 +20,7 @@ const List<LocationModel> locations = [
     latitude: -23.5010,
     longitude: -46.6010,
     radius: 10.0,
+    imagePath: 'assets/biblioteca.jpeg',
   ),
   LocationModel(
     id: '3',
@@ -28,6 +30,7 @@ const List<LocationModel> locations = [
     latitude: -23.5020,
     longitude: -46.6020,
     radius: 10.0,
+    imagePath: 'assets/H15.jpeg',
   ),
   LocationModel(
     id: '4',
@@ -37,6 +40,7 @@ const List<LocationModel> locations = [
     latitude: -23.5030,
     longitude: -46.6030,
     radius: 10.0,
+    imagePath: 'assets/praca_alimentacao.jpeg',
   ),
   LocationModel(
     id: '5',
@@ -46,5 +50,6 @@ const List<LocationModel> locations = [
     latitude: -23.5040,
     longitude: -46.6040,
     radius: 10.0,
+    imagePath: 'assets/manacas.jpeg',
   ),
 ];

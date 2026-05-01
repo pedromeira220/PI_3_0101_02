@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
+import '../models/location_model.dart';
 
 class DialogScreen extends StatelessWidget {
-  final String characterName;
-  final String dialogText;
-  final Widget characterWidget;
-  final VoidCallback onContinue;
+  final List<LocationModel> locations;
+  final int currentIndex;
 
   const DialogScreen({
     super.key,
-    required this.characterName,
-    required this.dialogText,
-    required this.characterWidget,
-    required this.onContinue,
+    required this.locations,
+    required this.currentIndex,
   });
+
+  LocationModel get _location => locations[currentIndex];
+
+  void _onContinue(BuildContext context) {
+    final nextIndex = currentIndex + 1;
+    if (nextIndex < locations.length) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => DialogScreen(
+            locations: locations,
+            currentIndex: nextIndex,
+          ),
+        ),
+      );
+    } else {
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +41,12 @@ class DialogScreen extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/estacionamento.png',
+              _location.imagePath.isNotEmpty
+                  ? _location.imagePath
+                  : 'assets/estacionamento.png',
               fit: BoxFit.cover,
             ),
           ),
-          Positioned.fill(child: characterWidget),
           Positioned(
             bottom: 0,
             left: 0,
@@ -76,7 +93,7 @@ class DialogScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    characterName,
+                    _location.name,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -92,7 +109,7 @@ class DialogScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      dialogText,
+                      _location.description ?? 'Você chegou a ${_location.name}!',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -105,7 +122,7 @@ class DialogScreen extends StatelessWidget {
                     width: double.infinity,
                     height: 54,
                     child: ElevatedButton(
-                      onPressed: onContinue,
+                      onPressed: () => _onContinue(context),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFCC1F2E),
                         foregroundColor: Colors.white,
@@ -114,9 +131,11 @@ class DialogScreen extends StatelessWidget {
                         ),
                         elevation: 0,
                       ),
-                      child: const Text(
-                        'Continuar',
-                        style: TextStyle(fontSize: 16),
+                      child: Text(
+                        currentIndex + 1 < locations.length
+                            ? 'Continuar'
+                            : 'Finalizar',
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),

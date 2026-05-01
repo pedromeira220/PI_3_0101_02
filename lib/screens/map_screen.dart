@@ -50,10 +50,8 @@ class _MapScreenState extends State<MapScreen> {
       context,
       MaterialPageRoute(
         builder: (_) => DialogScreen(
-          characterName: _currentTarget.name,
-          dialogText: _currentTarget.description ?? 'Você chegou a ${_currentTarget.name}!',
-          characterWidget: const SizedBox.shrink(),
-          onContinue: () => Navigator.pop(context),
+          locations: locations,
+          currentIndex: 0,
         ),
       ),
     );

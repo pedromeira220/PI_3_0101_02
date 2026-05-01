@@ -6,6 +6,7 @@ class LocationModel {
   final double longitude;
   final String? description;
   final double radius;
+  final String imagePath;
 
   const LocationModel({
     required this.id,
@@ -15,6 +16,7 @@ class LocationModel {
     required this.longitude,
     this.description,
     this.radius = 10.0,
+    this.imagePath = '',
   });
 
   factory LocationModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class LocationModel {
       latitude: _toDouble(json['latitude']),
       longitude: _toDouble(json['longitude']),
       description: json['description']?.toString(),
+      imagePath: json['imagePath']?.toString() ?? '',
     );
   }
 

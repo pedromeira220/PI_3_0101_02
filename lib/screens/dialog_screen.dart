@@ -1,37 +1,36 @@
 import 'package:flutter/material.dart';
 import '../models/location_model.dart';
 
-class DialogScreen extends StatelessWidget {
-  final List<LocationModel> locations;
-  final int currentIndex;
+class DialogScreen extends StatefulWidget {
+  final LocationModel location;
+  final Future<void> Function()? onComplete;
 
   const DialogScreen({
     super.key,
-    required this.locations,
-    required this.currentIndex,
+    required this.location,
+    this.onComplete,
   });
 
-  LocationModel get _location => locations[currentIndex];
+  @override
+  State<DialogScreen> createState() => _DialogScreenState();
+}
 
-  void _onContinue(BuildContext context) {
-    final nextIndex = currentIndex + 1;
-    if (nextIndex < locations.length) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => DialogScreen(
-            locations: locations,
-            currentIndex: nextIndex,
-          ),
-        ),
-      );
-    } else {
-      Navigator.pop(context);
+class _DialogScreenState extends State<DialogScreen> {
+  bool _isSaving = false;
+
+  Future<void> _onContinue() async {
+    if (_isSaving) return;
+    setState(() => _isSaving = true);
+    try {
+      await widget.onComplete?.call();
+    } finally {
+      if (mounted) Navigator.pop(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final location = widget.location;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
 
     return Scaffold(
@@ -41,8 +40,8 @@ class DialogScreen extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              _location.imagePath.isNotEmpty
-                  ? _location.imagePath
+              location.imagePath.isNotEmpty
+                  ? location.imagePath
                   : 'assets/estacionamento.png',
               fit: BoxFit.cover,
             ),
@@ -93,7 +92,7 @@ class DialogScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _location.name,
+                    location.name,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -109,7 +108,7 @@ class DialogScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      _location.description ?? 'Você chegou a ${_location.name}!',
+                      location.description ?? 'Você chegou a ${location.name}!',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -122,21 +121,26 @@ class DialogScreen extends StatelessWidget {
                     width: double.infinity,
                     height: 54,
                     child: ElevatedButton(
-                      onPressed: () => _onContinue(context),
+                      onPressed: _isSaving ? null : _onContinue,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFCC1F2E),
                         foregroundColor: Colors.white,
+                        disabledBackgroundColor: const Color(0xFFCC1F2E).withValues(alpha: 0.6),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                         elevation: 0,
                       ),
-                      child: Text(
-                        currentIndex + 1 < locations.length
-                            ? 'Continuar'
-                            : 'Finalizar',
-                        style: const TextStyle(fontSize: 16),
-                      ),
+                      child: _isSaving
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : const Text('Continuar', style: TextStyle(fontSize: 16)),
                     ),
                   ),
                 ],

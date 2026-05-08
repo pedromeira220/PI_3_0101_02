@@ -27,6 +27,7 @@ class LocationModel {
       latitude: _toDouble(json['latitude']),
       longitude: _toDouble(json['longitude']),
       description: json['description']?.toString(),
+      radius: _toDouble(json['radius'] ?? 10.0),
       imagePath: json['imagePath']?.toString() ?? '',
     );
   }

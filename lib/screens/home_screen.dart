@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _hasProgress = false;
+  String? _uid;
 
   @override
   void initState() {
@@ -24,13 +25,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _checkProgress() async {
     try {
       final uid = await UidService().getOrCreateUid();
+      _uid = uid;
       final player = await FunctionsService().loadProgress(uid);
       if (mounted && player.visitedLocationIds.isNotEmpty) {
         setState(() => _hasProgress = true);
       }
-    } catch (_) {
-      // sem progress salvo ou erro no firebase
-    }
+    } catch (_) {}
+  }
+
+  Future<void> _startNewGame() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Novo jogo'),
+        content: const Text('Tem certeza? O progresso atual será apagado.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Confirmar'),
+          ),
+        ],
+      ),
+    );
+    if (confirm != true || !mounted) return;
+    try {
+      await FunctionsService().saveProgress(_uid!, {}, {});
+    } catch (_) {}
+    if (mounted) Navigator.pushNamed(context, MapScreen.routeName);
   }
 
   @override
@@ -88,6 +113,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              if (_hasProgress) ...[
+                const SizedBox(height: 12),
+                SizedBox(
+                  width: 200,
+                  height: 56,
+                  child: OutlinedButton(
+                    onPressed: _startNewGame,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.white54),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Novo jogo',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

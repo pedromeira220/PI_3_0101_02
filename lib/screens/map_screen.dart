@@ -80,12 +80,10 @@ class _MapScreenState extends State<MapScreen> {
       _locations = results[0] as List<LocationModel>;
       _player = results[1] as PlayerModel;
 
-      // Se não há nenhum local desbloqueado, inicializa com o primeiro
       if (_player!.unlockedLocationIds.isEmpty && _locations.isNotEmpty) {
         _player = PlayerModel.fresh(_uid!, _locations.first.id);
       }
     } catch (_) {
-      // Fallback: dados locais + progresso do zero
       _locations = local_data.locations;
       _player = PlayerModel.fresh(_uid!, local_data.locations.first.id);
     }
@@ -110,7 +108,6 @@ class _MapScreenState extends State<MapScreen> {
 
     final visited = {..._player!.visitedLocationIds, target.id};
 
-    // Desbloqueia o próximo na sequência
     LocationModel? nextLoc;
     try {
       nextLoc = _locations.firstWhere(
@@ -128,7 +125,6 @@ class _MapScreenState extends State<MapScreen> {
     try {
       await _functionsService.saveProgress(_uid!, visited, unlocked);
     } catch (_) {
-      // ignora erro de rede, atualiza estado local mesmo assim
     }
 
     if (mounted) {
@@ -187,27 +183,38 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Widget _buildCompleted() {
-    return const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.emoji_events, color: Colors.amber, size: 72),
-          SizedBox(height: 24),
-          Text(
-            'Parabéns!',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
           ),
-          SizedBox(height: 12),
-          Text(
-            'Você visitou todos os ambientes!',
-            style: TextStyle(color: Colors.white70, fontSize: 16),
+        ),
+        const Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.emoji_events, color: Colors.amber, size: 72),
+              SizedBox(height: 24),
+              Text(
+                'Parabéns!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                'Você visitou todos os ambientes!',
+                style: TextStyle(color: Colors.white70, fontSize: 16),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -215,6 +222,13 @@ class _MapScreenState extends State<MapScreen> {
     final target = _currentTarget;
     return Column(
       children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+          ),
+        ),
         Expanded(
           child: Center(
             child: Column(

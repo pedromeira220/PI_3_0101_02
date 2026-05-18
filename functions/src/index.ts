@@ -47,3 +47,8 @@ export const loadProgress = onCall(async (request) => {
   if (!snap.exists) return {visited: [], unlocked: []};
   return snap.data() ?? {visited: [], unlocked: []};
 });
+
+export const getInteractions = onCall(async () => {
+  const snapshot = await db.collection("interactions").get();
+  return snapshot.docs.map((doc) => ({locationId: doc.id, ...doc.data()}));
+});

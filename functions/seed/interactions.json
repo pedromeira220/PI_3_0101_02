@@ -1,0 +1,110 @@
+[
+  {
+    "locationId": "1",
+    "musicPath": null,
+    "unlockHint": "O segurança mencionou algo sobre a biblioteca guardar segredos do campus...",
+    "dialogs": [
+      {
+        "speaker": "Segurança",
+        "characterImage": null,
+        "text": "Ei, você aí! Para! Quem é você e o que está fazendo aqui?",
+        "options": [
+          { "text": "Sou estudante, pode deixar.", "nextStep": 1 },
+          { "text": "Estou procurando algo importante.", "nextStep": 2 }
+        ]
+      },
+      {
+        "speaker": "Segurança",
+        "text": "Estudante, hein? Pode entrar. Mas fica esperto — esse campus tem segredos que poucos conhecem. Dizem que a biblioteca guarda um deles..."
+      },
+      {
+        "speaker": "Segurança",
+        "text": "Importante? Aqui no estacionamento não tem nada não. Mas se é segredo que você procura, tente a biblioteca."
+      }
+    ]
+  },
+  {
+    "locationId": "2",
+    "musicPath": null,
+    "unlockHint": "A bibliotecária sugeriu investigar o prédio H15 para encontrar mais pistas...",
+    "dialogs": [
+      {
+        "speaker": "Bibliotecária",
+        "characterImage": null,
+        "text": "Bem-vindo à biblioteca. Posso ajudar com alguma coisa?",
+        "options": [
+          { "text": "Procuro informações sobre o campus.", "nextStep": 1 },
+          { "text": "Só estou explorando.", "nextStep": 2 }
+        ]
+      },
+      {
+        "speaker": "Bibliotecária",
+        "text": "Os registros mais antigos foram transferidos para o H15. Talvez você encontre o que procura por lá."
+      },
+      {
+        "speaker": "Bibliotecária",
+        "text": "Explorando, claro. Se quiser continuar, o prédio H15 tem algo interessante. Poucos estudantes vão até lá."
+      }
+    ]
+  },
+  {
+    "locationId": "3",
+    "musicPath": null,
+    "unlockHint": "O professor falou sobre um encontro na praça de alimentação...",
+    "dialogs": [
+      {
+        "speaker": "Professor",
+        "characterImage": null,
+        "text": "Você chegou até aqui. Interessante. O que te trouxe a este corredor esquecido?",
+        "options": [
+          { "text": "Estou seguindo as pistas.", "nextStep": 1 },
+          { "text": "Alguém me mandou aqui.", "nextStep": 2 }
+        ]
+      },
+      {
+        "speaker": "Professor",
+        "text": "As pistas... você é mais perspicaz do que parece. O que você busca está próximo. Vá à praça de alimentação."
+      },
+      {
+        "speaker": "Professor",
+        "text": "Sábio da parte deles. Não direi mais nada — vá à praça de alimentação. Você vai entender quando chegar lá."
+      }
+    ]
+  },
+  {
+    "locationId": "4",
+    "musicPath": null,
+    "unlockHint": "O vendedor mencionou o jardim das Manacas como o destino final da sua jornada...",
+    "dialogs": [
+      {
+        "speaker": "Vendedor",
+        "characterImage": null,
+        "text": "Ei, você é o aventureiro, não é? Estava te esperando. Senta aí.",
+        "options": [
+          { "text": "Como você sabe quem eu sou?", "nextStep": 1 },
+          { "text": "Sim, sou eu. O que tem pra me falar?", "nextStep": 1 }
+        ]
+      },
+      {
+        "speaker": "Vendedor",
+        "text": "Nesse campus, todo mundo sabe de tudo. Ouça: sua jornada está quase no fim. O jardim das Manacas — é lá que tudo começa e termina. Vá até lá."
+      }
+    ]
+  },
+  {
+    "locationId": "5",
+    "musicPath": null,
+    "unlockHint": null,
+    "dialogs": [
+      {
+        "speaker": "Voz misteriosa",
+        "characterImage": null,
+        "text": "Você chegou até aqui. Atravessou o campus, seguiu as pistas, falou com todos."
+      },
+      {
+        "speaker": "Voz misteriosa",
+        "text": "Sua jornada não é sobre um destino — é sobre os caminhos que você escolheu percorrer. Até a próxima aventura, explorador."
+      }
+    ]
+  }
+]

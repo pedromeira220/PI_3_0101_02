@@ -1,4 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import '../models/interaction_model.dart';
 import '../models/location_model.dart';
 import '../models/player_model.dart';
 
@@ -38,5 +39,18 @@ class FunctionsService {
         .httpsCallable('loadProgress')
         .call<Map<String, dynamic>>({'uid': uid});
     return PlayerModel.fromJson(uid, Map<String, dynamic>.from(result.data));
+  }
+
+  Future<Map<String, InteractionModel>> getInteractions() async {
+    final result = await _functions
+        .httpsCallable('getInteractions')
+        .call<List<dynamic>>();
+    final map = <String, InteractionModel>{};
+    for (final raw in result.data) {
+      final e = Map<String, dynamic>.from(raw as Map);
+      final id = e['locationId'].toString();
+      map[id] = InteractionModel.fromJson(id, e);
+    }
+    return map;
   }
 }

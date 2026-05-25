@@ -1,3 +1,5 @@
+import 'dialog_model.dart';
+
 class LocationModel {
   final String id;
   final String name;
@@ -7,6 +9,9 @@ class LocationModel {
   final String? description;
   final double radius;
   final String imagePath;
+  final List<DialogStep> dialogs;
+  final String? musicPath;
+  final String? unlockHint;
 
   const LocationModel({
     required this.id,
@@ -17,6 +22,9 @@ class LocationModel {
     this.description,
     this.radius = 10.0,
     this.imagePath = '',
+    this.dialogs = const [],
+    this.musicPath,
+    this.unlockHint,
   });
 
   factory LocationModel.fromJson(Map<String, dynamic> json) {

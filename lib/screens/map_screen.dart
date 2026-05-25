@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../data/locations.dart' as local_data;
+import '../models/interaction_model.dart';
 import '../models/location_model.dart';
 import '../models/player_model.dart';
 import '../services/functions_service.dart';
@@ -76,8 +77,12 @@ class _MapScreenState extends State<MapScreen> {
       final results = await Future.wait([
         _functionsService.getLocations(),
         _functionsService.loadProgress(_uid!),
+        _functionsService.getInteractions(),
       ]);
-      _locations = results[0] as List<LocationModel>;
+      _locations = _mergeInteractions(
+        results[0] as List<LocationModel>,
+        results[2] as Map<String, InteractionModel>,
+      );
       _player = results[1] as PlayerModel;
 
       if (_player!.unlockedLocationIds.isEmpty && _locations.isNotEmpty) {
@@ -87,6 +92,29 @@ class _MapScreenState extends State<MapScreen> {
       _locations = local_data.locations;
       _player = PlayerModel.fresh(_uid!, local_data.locations.first.id);
     }
+  }
+
+  List<LocationModel> _mergeInteractions(
+    List<LocationModel> locations,
+    Map<String, InteractionModel> interactions,
+  ) {
+    return locations.map((loc) {
+      final interaction = interactions[loc.id];
+      if (interaction == null) return loc;
+      return LocationModel(
+        id: loc.id,
+        name: loc.name,
+        sequence: loc.sequence,
+        latitude: loc.latitude,
+        longitude: loc.longitude,
+        description: loc.description,
+        radius: loc.radius,
+        imagePath: loc.imagePath,
+        dialogs: interaction.dialogs,
+        musicPath: interaction.musicPath,
+        unlockHint: interaction.unlockHint,
+      );
+    }).toList();
   }
 
   Future<void> _updateDistance() async {
@@ -142,16 +170,52 @@ class _MapScreenState extends State<MapScreen> {
     if (_currentTarget != null) await _updateDistance();
   }
 
-  void _openDialog() {
+  Future<void> _openDialog() async {
     final target = _currentTarget;
     if (target == null) return;
-    Navigator.push(
+    await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => DialogScreen(
           location: target,
           onComplete: _onLocationCompleted,
         ),
+      ),
+    );
+    if (mounted && (target.unlockHint?.isNotEmpty ?? false)) {
+      _showUnlockHint(target.unlockHint!);
+    }
+  }
+
+  void _showUnlockHint(String hint) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFF0D1A4A),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: Colors.white12),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.explore, color: Colors.amber, size: 40),
+            const SizedBox(height: 16),
+            Text(
+              hint,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 15, height: 1.5),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Continuar',
+                style: TextStyle(color: Colors.amber)),
+          ),
+        ],
       ),
     );
   }

@@ -2,92 +2,154 @@
   {
     "locationId": "1",
     "musicPath": null,
-    "unlockHint": "O segurança mencionou algo sobre a biblioteca guardar segredos do campus...",
+    "unlockHint": "O último lugar que você lembra de ter o caderno é a Biblioteca.",
     "dialogs": [
       {
-        "speaker": "Segurança",
+        "speaker": "Narrador",
         "characterImage": null,
-        "text": "Ei, você aí! Para! Quem é você e o que está fazendo aqui?",
+        "text": "São 23h de sábado. Você acabou de lembrar: o caderno com todas as anotações do semestre está na biblioteca. Segunda-feira, 8h, o professor chama seu nome primeiro. Vale nota. Você não tem escolha. A PUC está fechada.",
         "options": [
-          { "text": "Sou estudante, pode deixar.", "nextStep": 1 },
-          { "text": "Estou procurando algo importante.", "nextStep": 2 }
+          { "text": "Examinar o portão.", "nextStep": 1 },
+          { "text": "Examinar o estacionamento.", "nextStep": 2 },
+          { "text": "Falar com o segurança.", "nextStep": 3 }
+        ]
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Corrente grossa. Não vai abrir sem chave.",
+        "options": [
+          { "text": "Examinar o estacionamento.", "nextStep": 2 },
+          { "text": "Falar com o segurança.", "nextStep": 3 }
+        ]
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Vazio. Nem o carro do professor está aqui.",
+        "options": [
+          { "text": "Examinar o portão.", "nextStep": 1 },
+          { "text": "Falar com o segurança.", "nextStep": 3 }
         ]
       },
       {
         "speaker": "Segurança",
-        "text": "Estudante, hein? Pode entrar. Mas fica esperto — esse campus tem segredos que poucos conhecem. Dizem que a biblioteca guarda um deles..."
+        "characterImage": null,
+        "text": "Ei, você aí! Parado! Quem é você e o que está fazendo aqui?",
+        "options": [
+          { "text": "Conversar: explicar sobre o caderno.", "nextStep": 4 },
+          { "text": "Correr: pular o portão lateral.", "nextStep": 5 }
+        ]
       },
       {
         "speaker": "Segurança",
-        "text": "Importante? Aqui no estacionamento não tem nada não. Mas se é segredo que você procura, tente a biblioteca."
+        "characterImage": null,
+        "text": "Tá bom. Mas volte logo.."
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Você pula o portão lateral. O segurança grita, mas não te alcança."
       }
     ]
   },
   {
     "locationId": "2",
     "musicPath": null,
-    "unlockHint": "A bibliotecária sugeriu investigar o prédio H15 para encontrar mais pistas...",
+    "unlockHint": "Alguém esteve aqui antes de você. E deixou um recado.",
     "dialogs": [
       {
-        "speaker": "Bibliotecária",
+        "speaker": "Narrador",
         "characterImage": null,
-        "text": "Bem-vindo à biblioteca. Posso ajudar com alguma coisa?",
+        "text": "A Biblioteca era o último lugar que você lembrava de ter o caderno. Mas a porta está fechada. Algo está errado. Livros espalhados pelo chão, estantes desorganizadas. Nenhuma pessoa à vista.",
         "options": [
-          { "text": "Procuro informações sobre o campus.", "nextStep": 1 },
-          { "text": "Só estou explorando.", "nextStep": 2 }
+          { "text": "Examinar a bolsa abandonada.", "nextStep": 1 },
+          { "text": "Examinar a folha no chão.", "nextStep": 2 }
         ]
       },
       {
-        "speaker": "Bibliotecária",
-        "text": "Os registros mais antigos foram transferidos para o H15. Talvez você encontre o que procura por lá."
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Não é a sua. Tem um caderno dentro — mas também não é o seu.",
+        "options": [
+          { "text": "Examinar a folha no chão.", "nextStep": 2 }
+        ]
       },
       {
-        "speaker": "Bibliotecária",
-        "text": "Explorando, claro. Se quiser continuar, o prédio H15 tem algo interessante. Poucos estudantes vão até lá."
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Descanso no térreo, onde a galera de TI cria seus projetos — onde estou?"
       }
     ]
   },
   {
     "locationId": "3",
     "musicPath": null,
-    "unlockHint": "O professor falou sobre um encontro na praça de alimentação...",
+    "unlockHint": "Próximo destino: Praça de Alimentação.",
     "dialogs": [
       {
-        "speaker": "Professor",
+        "speaker": "Narrador",
         "characterImage": null,
-        "text": "Você chegou até aqui. Interessante. O que te trouxe a este corredor esquecido?",
+        "text": "A charada apontou para cá. A sala está destruída — mas você não está sozinho. Luz fluorescente piscando. Lousa coberta de rabiscos. Mesas e cadeiras tombadas. No meio da bagunça, um estudante sentado no chão, encostado na parede, olhando para o nada.",
         "options": [
-          { "text": "Estou seguindo as pistas.", "nextStep": 1 },
-          { "text": "Alguém me mandou aqui.", "nextStep": 2 }
+          { "text": "Ignorar o estudante.", "nextStep": 1 },
+          { "text": "Perguntar o que ele faz ali.", "nextStep": 2 }
         ]
       },
       {
-        "speaker": "Professor",
-        "text": "As pistas... você é mais perspicaz do que parece. O que você busca está próximo. Vá à praça de alimentação."
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Você não tem tempo pra isso. O estômago ronca — faz horas que não come nada. Talvez tenha algo na praça de alimentação."
       },
       {
-        "speaker": "Professor",
-        "text": "Sábio da parte deles. Não direi mais nada — vá à praça de alimentação. Você vai entender quando chegar lá."
+        "speaker": "Estudante",
+        "characterImage": null,
+        "text": "Que dia é hoje? Você viu meu celular por aí?",
+        "options": [
+          { "text": "Perguntar o que aconteceu.", "nextStep": 3 }
+        ]
+      },
+      {
+        "speaker": "Estudante",
+        "characterImage": null,
+        "text": "Não sei quanto tempo estou aqui. Todo mundo foi embora de repente. Não consigo sinal no celular desde então. Acho que vi alguém indo pra praça de alimentação antes de tudo isso começar...",
+        "options": [
+          { "text": "Ir até a praça de alimentação.", "nextStep": 4 }
+        ]
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "A praça de alimentação. Pode ser uma pista."
       }
     ]
   },
   {
     "locationId": "4",
     "musicPath": null,
-    "unlockHint": "O vendedor mencionou o jardim das Manacas como o destino final da sua jornada...",
+    "unlockHint": "O Manacás. Você ainda não foi lá.",
     "dialogs": [
       {
-        "speaker": "Vendedor",
+        "speaker": "Narrador",
         "characterImage": null,
-        "text": "Ei, você é o aventureiro, não é? Estava te esperando. Senta aí.",
+        "text": "Depois da bagunça lá fora, você esperava o mesmo aqui. Mas a praça está perfeita. Limpa demais. Arrumada demais. Isso não é abandono — isso é apagamento. Um cheiro forte de Veja Roxo paira no ar.",
         "options": [
-          { "text": "Como você sabe quem eu sou?", "nextStep": 1 },
-          { "text": "Sim, sou eu. O que tem pra me falar?", "nextStep": 1 }
+          { "text": "Examinar as lojas fechadas.", "nextStep": 1 },
+          { "text": "Examinar as mesas e cadeiras.", "nextStep": 2 }
         ]
       },
       {
-        "speaker": "Vendedor",
-        "text": "Nesse campus, todo mundo sabe de tudo. Ouça: sua jornada está quase no fim. O jardim das Manacas — é lá que tudo começa e termina. Vá até lá."
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Grade abaixada e trancada. Sem cartaz, sem aviso, sem data.",
+        "options": [
+          { "text": "Examinar as mesas e cadeiras.", "nextStep": 2 }
+        ]
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Alinhadas com precisão. Ninguém arruma assim ao fechar."
       }
     ]
   },
@@ -97,13 +159,33 @@
     "unlockHint": null,
     "dialogs": [
       {
-        "speaker": "Voz misteriosa",
+        "speaker": "Narrador",
         "characterImage": null,
-        "text": "Você chegou até aqui. Atravessou o campus, seguiu as pistas, falou com todos."
+        "text": "É o último lugar. Tem que estar aqui. Mas algo — ou alguém — chegou antes de você. O Manacás está completamente abandonado. Escuridão, lixo espalhado, mesas e cadeiras reviradas. O contraste com a praça impecável é imediato e perturbador."
       },
       {
-        "speaker": "Voz misteriosa",
-        "text": "Sua jornada não é sobre um destino — é sobre os caminhos que você escolheu percorrer. Até a próxima aventura, explorador."
+        "speaker": "Professor",
+        "characterImage": null,
+        "text": "Você não devia estar aqui. Mas já que veio... esse caderno tem coisas que você precisa me explicar.",
+        "options": [
+          { "text": "Confrontar: acusar o professor de exagero.", "nextStep": 2 },
+          { "text": "Negociar: explicar a situação com calma.", "nextStep": 3 }
+        ]
+      },
+      {
+        "speaker": "Professor",
+        "characterImage": null,
+        "text": "Exagero? Você vai ter que provar que esse caderno é seu."
+      },
+      {
+        "speaker": "Professor",
+        "characterImage": null,
+        "text": "Tudo bem. Mas antes de devolver, me responda uma coisa sobre o conteúdo desse caderno."
+      },
+      {
+        "speaker": "Narrador",
+        "characterImage": null,
+        "text": "Você pega o caderno e volta pra casa. Segunda-feira, o professor não veio por problemas de saúde. A nota de caderno será desconsiderada esse semestre."
       }
     ]
   }

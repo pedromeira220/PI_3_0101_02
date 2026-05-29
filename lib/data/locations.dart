@@ -14,7 +14,7 @@ const List<LocationModel> locations = [
     longitude: -46.6000,
     radius: 10.0,
     imagePath: 'assets/estacionamento.png',
-    // musicPath: 'assets/audio/estacionamento.mp3',
+    musicPath: 'music/estacionamento.mp3',
     unlockHint:
         'O segurança mencionou algo sobre a biblioteca guardar segredos do campus...',
     dialogs: [

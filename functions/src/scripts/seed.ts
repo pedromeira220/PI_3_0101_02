@@ -34,6 +34,7 @@ if (fs.existsSync(keyPath)) {
 
 const db = admin.firestore();
 
+// eslint-disable-next-line require-jsdoc
 async function seed(): Promise<void> {
   const dataPath = path.resolve(__dirname, "../../seed/interactions.json");
   const interactions = JSON.parse(

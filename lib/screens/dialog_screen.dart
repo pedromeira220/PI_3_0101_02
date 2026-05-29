@@ -36,13 +36,32 @@ class _DialogScreenState extends State<DialogScreen> {
 
   Future<void> _playMusic() async {
     final path = widget.location.musicPath;
-    if (path == null || path.isEmpty) return;
+    debugPrint('[Audio] musicPath: $path');
+    if (path == null || path.isEmpty) {
+      debugPrint('[Audio] nenhum musicPath, pulando');
+      return;
+    }
     try {
+      await AudioPlayer.global.setAudioContext(AudioContext(
+        iOS: AudioContextIOS(
+          category: AVAudioSessionCategory.playback,
+          options: {AVAudioSessionOptions.mixWithOthers},
+        ),
+        android: AudioContextAndroid(
+          contentType: AndroidContentType.music,
+          usageType: AndroidUsageType.media,
+          audioFocus: AndroidAudioFocus.gain,
+        ),
+      ));
       final assetPath =
-          path.startsWith('assets/') ? path.substring(7) : path;
+          path.startsWith('assets/') ? path.substring('assets/'.length) : path;
+      debugPrint('[Audio] AssetSource: $assetPath');
       await _audioPlayer.setReleaseMode(ReleaseMode.loop);
       await _audioPlayer.play(AssetSource(assetPath));
-    } catch (_) {}
+      debugPrint('[Audio] play() chamado com sucesso');
+    } catch (e, st) {
+      debugPrint('[Audio] erro: $e\n$st');
+    }
   }
 
   List<DialogStep> get _dialogs => widget.location.dialogs;
@@ -225,8 +244,8 @@ class _DialogScreenState extends State<DialogScreen> {
     return Row(
       children: [
         Container(
-          width: 44,
-          height: 44,
+          width: 64,
+          height: 64,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: const Color(0xFF0D1A4A),

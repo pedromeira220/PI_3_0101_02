@@ -88,7 +88,8 @@ class _MapScreenState extends State<MapScreen> {
       if (_player!.unlockedLocationIds.isEmpty && _locations.isNotEmpty) {
         _player = PlayerModel.fresh(_uid!, _locations.first.id);
       }
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[LoadData] Firebase falhou, usando dados locais: $e');
       _locations = local_data.locations;
       _player = PlayerModel.fresh(_uid!, local_data.locations.first.id);
     }

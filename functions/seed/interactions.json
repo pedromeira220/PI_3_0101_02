@@ -34,7 +34,7 @@
       },
       {
         "speaker": "Segurança",
-        "characterImage": null,
+        "characterImage": "assets/images/porteiro_image.jpeg",
         "text": "Ei, você aí! Parado! Quem é você e o que está fazendo aqui?",
         "options": [
           { "text": "Conversar: explicar sobre o caderno.", "nextStep": 4 },
@@ -43,7 +43,7 @@
       },
       {
         "speaker": "Segurança",
-        "characterImage": null,
+        "characterImage": "assets/images/porteiro_image.jpeg",
         "text": "Tá bom. Mas volte logo.."
       },
       {
@@ -55,7 +55,7 @@
   },
   {
     "locationId": "2",
-    "musicPath": null,
+    "musicPath": "music/biblioteca.mp3",
     "unlockHint": "Alguém esteve aqui antes de você. E deixou um recado.",
     "dialogs": [
       {
@@ -84,7 +84,7 @@
   },
   {
     "locationId": "3",
-    "musicPath": null,
+    "musicPath": "music/h15.mp3",
     "unlockHint": "Próximo destino: Praça de Alimentação.",
     "dialogs": [
       {
@@ -103,7 +103,7 @@
       },
       {
         "speaker": "Estudante",
-        "characterImage": null,
+        "characterImage": "assets/images/estudante_image.jpeg",
         "text": "Que dia é hoje? Você viu meu celular por aí?",
         "options": [
           { "text": "Perguntar o que aconteceu.", "nextStep": 3 }
@@ -111,7 +111,7 @@
       },
       {
         "speaker": "Estudante",
-        "characterImage": null,
+        "characterImage": "assets/images/estudante_image.jpeg",
         "text": "Não sei quanto tempo estou aqui. Todo mundo foi embora de repente. Não consigo sinal no celular desde então. Acho que vi alguém indo pra praça de alimentação antes de tudo isso começar...",
         "options": [
           { "text": "Ir até a praça de alimentação.", "nextStep": 4 }
@@ -126,7 +126,7 @@
   },
   {
     "locationId": "4",
-    "musicPath": null,
+    "musicPath": "music/refeitorio.mp3",
     "unlockHint": "O Manacás. Você ainda não foi lá.",
     "dialogs": [
       {
@@ -155,7 +155,7 @@
   },
   {
     "locationId": "5",
-    "musicPath": null,
+    "musicPath": "music/manacas.mp3",
     "unlockHint": null,
     "dialogs": [
       {
@@ -165,7 +165,7 @@
       },
       {
         "speaker": "Professor",
-        "characterImage": null,
+        "characterImage": "assets/images/professor_image.jpeg",
         "text": "Você não devia estar aqui. Mas já que veio... esse caderno tem coisas que você precisa me explicar.",
         "options": [
           { "text": "Confrontar: acusar o professor de exagero.", "nextStep": 2 },
@@ -174,12 +174,12 @@
       },
       {
         "speaker": "Professor",
-        "characterImage": null,
+        "characterImage": "assets/images/professor_image.jpeg",
         "text": "Exagero? Você vai ter que provar que esse caderno é seu."
       },
       {
         "speaker": "Professor",
-        "characterImage": null,
+        "characterImage": "assets/images/professor_image.jpeg",
         "text": "Tudo bem. Mas antes de devolver, me responda uma coisa sobre o conteúdo desse caderno."
       },
       {

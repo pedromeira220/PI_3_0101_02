@@ -49,7 +49,7 @@ const List<LocationModel> locations = [
     longitude: -46.6010,
     radius: 10.0,
     imagePath: 'assets/biblioteca.jpeg',
-    // musicPath: 'assets/audio/biblioteca.mp3',
+    musicPath: 'music/biblioteca.mp3',
     unlockHint:
         'A bibliotecária sugeriu investigar o prédio H15 para encontrar mais pistas...',
     dialogs: [
@@ -84,7 +84,7 @@ const List<LocationModel> locations = [
     longitude: -46.6020,
     radius: 10.0,
     imagePath: 'assets/H15.jpeg',
-    // musicPath: 'assets/audio/h15.mp3',
+    musicPath: 'music/h15.mp3',
     unlockHint:
         'O professor falou sobre um encontro na praça de alimentação...',
     dialogs: [
@@ -119,7 +119,7 @@ const List<LocationModel> locations = [
     longitude: -46.6030,
     radius: 10.0,
     imagePath: 'assets/praca_alimentacao.jpeg',
-    // musicPath: 'assets/audio/praca.mp3',
+    musicPath: 'music/refeitorio.mp3',
     unlockHint:
         'O vendedor mencionou o jardim das Manacas como o destino final da sua jornada...',
     dialogs: [
@@ -148,7 +148,7 @@ const List<LocationModel> locations = [
     longitude: -46.6040,
     radius: 10.0,
     imagePath: 'assets/manacas.jpeg',
-    // musicPath: 'assets/audio/manacas.mp3',
+    musicPath: 'music/manacas.mp3',
     dialogs: [
       DialogStep(
         speaker: 'Voz misteriosa',

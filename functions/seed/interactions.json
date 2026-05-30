@@ -71,9 +71,7 @@
         "speaker": "Narrador",
         "characterImage": null,
         "text": "Não é a sua. Tem um caderno dentro — mas também não é o seu.",
-        "options": [
-          { "text": "Examinar a folha no chão.", "nextStep": 2 }
-        ]
+        "options": [{ "text": "Examinar a folha no chão.", "nextStep": 2 }]
       },
       {
         "speaker": "Narrador",
@@ -105,17 +103,13 @@
         "speaker": "Estudante",
         "characterImage": "assets/images/estudante_image.jpeg",
         "text": "Que dia é hoje? Você viu meu celular por aí?",
-        "options": [
-          { "text": "Perguntar o que aconteceu.", "nextStep": 3 }
-        ]
+        "options": [{ "text": "Perguntar o que aconteceu.", "nextStep": 3 }]
       },
       {
         "speaker": "Estudante",
         "characterImage": "assets/images/estudante_image.jpeg",
         "text": "Não sei quanto tempo estou aqui. Todo mundo foi embora de repente. Não consigo sinal no celular desde então. Acho que vi alguém indo pra praça de alimentação antes de tudo isso começar...",
-        "options": [
-          { "text": "Ir até a praça de alimentação.", "nextStep": 4 }
-        ]
+        "options": [{ "text": "Ir até a praça de alimentação.", "nextStep": 4 }]
       },
       {
         "speaker": "Narrador",
@@ -142,9 +136,7 @@
         "speaker": "Narrador",
         "characterImage": null,
         "text": "Grade abaixada e trancada. Sem cartaz, sem aviso, sem data.",
-        "options": [
-          { "text": "Examinar as mesas e cadeiras.", "nextStep": 2 }
-        ]
+        "options": [{ "text": "Examinar as mesas e cadeiras.", "nextStep": 2 }]
       },
       {
         "speaker": "Narrador",
@@ -168,7 +160,10 @@
         "characterImage": "assets/images/professor_image.jpeg",
         "text": "Você não devia estar aqui. Mas já que veio... esse caderno tem coisas que você precisa me explicar.",
         "options": [
-          { "text": "Confrontar: acusar o professor de exagero.", "nextStep": 2 },
+          {
+            "text": "Confrontar: acusar o professor de exagero.",
+            "nextStep": 2
+          },
           { "text": "Negociar: explicar a situação com calma.", "nextStep": 3 }
         ]
       },
@@ -180,7 +175,7 @@
       {
         "speaker": "Professor",
         "characterImage": "assets/images/professor_image.jpeg",
-        "text": "Tudo bem. Mas antes de devolver, me responda uma coisa sobre o conteúdo desse caderno."
+        "text": "Tudo bem. Mas antes de devolver, me responda algumas coisas sobre o conteúdo desse caderno."
       },
       {
         "speaker": "Narrador",

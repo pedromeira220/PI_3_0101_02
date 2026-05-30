@@ -7,6 +7,7 @@ import '../models/player_model.dart';
 import '../services/functions_service.dart';
 import '../services/gps_service.dart';
 import '../services/uid_service.dart';
+import 'battle_screen.dart';
 import 'dialog_screen.dart';
 
 class MapScreen extends StatefulWidget {
@@ -177,10 +178,15 @@ class _MapScreenState extends State<MapScreen> {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => DialogScreen(
-          location: target,
-          onComplete: _onLocationCompleted,
-        ),
+        builder: (_) => target.id == '5'
+            ? BattleScreen(
+                location: target,
+                onComplete: _onLocationCompleted,
+              )
+            : DialogScreen(
+                location: target,
+                onComplete: _onLocationCompleted,
+              ),
       ),
     );
     if (mounted && (target.unlockHint?.isNotEmpty ?? false)) {

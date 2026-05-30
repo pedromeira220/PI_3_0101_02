@@ -2,16 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## Localização dos lugares
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Estacionamento: -22,83456378414607, -47,05290168104912
+2. Biblioteca: -22,833916335557316, -47,05185683165997
+3. H15: -22,834081615077796, -47,05268525615135
+4. Refeitório: -22,833057066050255, -47,05227840703882
+5. Manacas: -22,832441273024962, -47,05125401518907
